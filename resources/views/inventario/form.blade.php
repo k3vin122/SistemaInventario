@@ -107,12 +107,10 @@
                     {{ Form::select('id_marca',$marcas, $inventario->id_marca, ['class' => 'form-control' . ($errors->has('id_marca') ? ' is-invalid' : ''), 'placeholder' => '----']) }}
                     {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <br>
-                <br>
-
-                <div class="box-footer mt20">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>

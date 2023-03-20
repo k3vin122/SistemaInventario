@@ -16,6 +16,8 @@ Proveedore
                         <span id="card_title">
                             {{ __('Proveedor') }}
                         </span>
+                        <h4 class="mb-0">Total Proveedores : {{$countproveedor}}</h4>
+
 
                         <div class="float-right">
                             <a href="{{ route('proveedores.create') }}" class="btn btn-primary btn-sm float-right"
@@ -36,8 +38,6 @@ Proveedore
                         <table class="table table-striped table-hover">
                             <thead class="thead">
                                 <tr>
-                                    <th>Id</th>
-
                                     <th>Nombre</th>
                                     <th>Dirección</th>
                                     <th>Rut</th>
@@ -48,17 +48,13 @@ Proveedore
                             <tbody>
                                 @foreach ($proveedores as $proveedore)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
-
                                     <td>{{ $proveedore->nombre }}</td>
                                     <td>{{ $proveedore->direccion }}</td>
                                     <td>{{ $proveedore->rol }}</td>
 
                                     <td>
                                         <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">
-                                            <a class="btn btn-sm btn-primary "
-                                                href="{{ route('proveedores.show',$proveedore->id) }}"><i
-                                                    class="fa fa-fw fa-eye"></i> Ver</a>
+
                                             <a class="btn btn-sm btn-success"
                                                 href="{{ route('proveedores.edit',$proveedore->id) }}"><i
                                                     class="fa fa-fw fa-edit"></i> Editar</a>

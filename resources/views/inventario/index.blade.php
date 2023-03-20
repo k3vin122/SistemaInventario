@@ -5,13 +5,6 @@ Inventario
 @endsection
 @section('content')
 
-
-
-
-
-
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
@@ -21,8 +14,7 @@ Inventario
                         <span id="card_title">
                             {{ __('Inventario') }}
                         </span>
-
-
+                        <h4 class="mb-0">Equipos entregados : {{$invenatrycount}}</h4>
                         <span id="card_title">
                             <div class="panel panel-success">
                                 <form action="{{route('inventarios.index')}}" method="GET" class="d-flex">

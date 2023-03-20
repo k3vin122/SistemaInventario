@@ -22,8 +22,13 @@ class InventarioController extends Controller
      */
     public function index(Request $request)
     {
-        $busqueda_inventario =  $request->busqueda;
 
+
+     /*** contar registros*/
+        $invenatrycount = Inventario::count();
+
+             /**Busqueda de registros inventario*/
+        $busqueda_inventario =  $request->busqueda;
         $inventarios = Inventario::where('n_invenatario','LIKE','%'.$busqueda_inventario.'%')
                             ->orWhere('mac','LIKE','%'.$busqueda_inventario.'%')
                             ->orWhere('unidad','LIKE','%'.$busqueda_inventario.'%')
@@ -36,10 +41,7 @@ class InventarioController extends Controller
                                 'inventarios'=>$inventarios,
                                 'busqueda_inventario'=>$busqueda_inventario,
                             ];
-
-
-
-        return view('inventario.index', compact('inventarios'))
+        return view('inventario.index', compact('inventarios','invenatrycount'))
             ->with('i', (request()->input('page', 1) - 1) * $inventarios->perPage());
     }
 

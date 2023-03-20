@@ -18,9 +18,10 @@ class ProveedoreController extends Controller
      */
     public function index()
     {
+        $countproveedor = Proveedore::count();
         $proveedores = Proveedore::paginate();
 
-        return view('proveedore.index', compact('proveedores'))
+        return view('proveedore.index', compact('proveedores','countproveedor'))
             ->with('i', (request()->input('page', 1) - 1) * $proveedores->perPage());
     }
 

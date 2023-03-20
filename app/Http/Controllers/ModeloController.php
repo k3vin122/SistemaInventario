@@ -18,9 +18,10 @@ class ModeloController extends Controller
      */
     public function index()
     {
+        $countmodelo= Modelo::count();
         $modelos = Modelo::paginate();
 
-        return view('modelo.index', compact('modelos'))
+        return view('modelo.index', compact('modelos','countmodelo'))
             ->with('i', (request()->input('page', 1) - 1) * $modelos->perPage());
     }
 
