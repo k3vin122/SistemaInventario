@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\RegistroSeries;
 use Illuminate\Http\Request;
+use App\Imports\RegistroSerieImport;
+use App\Excel;
+
+
+
 
 /**
  * Class RegistroSeriesController
@@ -11,6 +16,17 @@ use Illuminate\Http\Request;
  */
 class RegistroSeriesController extends Controller
 {
+
+
+ /**
+     * Display a listing of the resource.
+     *subir archivo con carga de numeros de serie 
+
+     */
+
+  
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +34,7 @@ class RegistroSeriesController extends Controller
      */
     public function index()
     {
-        $registroSeries = RegistroSeries::paginate();
+        $registroSeries = RegistroSeries::paginate(10);
 
         return view('registro-series.index', compact('registroSeries'))
             ->with('i', (request()->input('page', 1) - 1) * $registroSeries->perPage());
@@ -43,12 +59,36 @@ class RegistroSeriesController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(RegistroSeries::$rules);
 
-        $registroSeries = RegistroSeries::create($request->all());
 
-        return redirect()->route('registro-series.index')
-            ->with('success', 'RegistroSeries created successfully.');
+        /**
+     * Store a newly created resource in storage.
+       *request()->validate(RegistroSeries::$rules);
+
+       * $registroSeries = RegistroSeries::create($request->all());
+
+        *return redirect()->route('registro-series.index')
+           * ->with('success', 'RegistroSeries created successfully.');
+     */
+
+    if ($request->hasFile('import_file')){
+        $ruta = $request->file('import_file')->getRealPath();
+        $datos = Excel::load('$ruta', function($leedor){
+        })->get();
+
+        if(!empty($datos) && $datos->count()){
+           $datos = $datos->toArray();
+           for($i=0; $i< count($datos); $i++){
+            $datosImportar =$datos[$i];
+
+           }
+            
+        }
+        $registroSeries::insert($datosImportar);
+    }
+
+    return back();
+
     }
 
     /**

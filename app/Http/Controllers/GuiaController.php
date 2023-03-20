@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Guia;
+use App\Proveedore;
+
 use Illuminate\Http\Request;
 
 /**
@@ -18,9 +20,11 @@ class GuiaController extends Controller
      */
     public function index()
     {
+
+        $countgia = Guia::count();
         $guias = Guia::paginate();
 
-        return view('guia.index', compact('guias'))
+        return view('guia.index', compact('guias','countgia'))
             ->with('i', (request()->input('page', 1) - 1) * $guias->perPage());
     }
 
@@ -32,7 +36,8 @@ class GuiaController extends Controller
     public function create()
     {
         $guia = new Guia();
-        return view('guia.create', compact('guia'));
+        $x1 = Proveedore::pluck('nombre','id');
+        return view('guia.create', compact('guia','x1'));
     }
 
     /**
@@ -73,8 +78,8 @@ class GuiaController extends Controller
     public function edit($id)
     {
         $guia = Guia::find($id);
-
-        return view('guia.edit', compact('guia'));
+        $x1 = Proveedore::pluck('nombre','id');
+        return view('guia.edit', compact('guia','x1'));
     }
 
     /**

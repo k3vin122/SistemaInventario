@@ -1,30 +1,36 @@
 @extends('layouts.dashboardBase')
 
 @section('template_title')
-    Create Tipo Equipo
+Create Tipo Equipo
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
 
-                @includeif('partials.errors')
+            @includeif('partials.errors')
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">Create Tipo Equipo</span>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('tipo-equipos.store') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
+            <div class="card card-default">
+                <div class="card-header">
+                    <h1> Crear Nuevo Tipo de Equipo</h1>
 
-                            @include('tipo-equipo.form')
+                    <span class="card-title">Aquí en este módulo podrás agregar un nuevo tipo de equipo para ser
+                        utilizado en registro de inventario.</span>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('tipo-equipos.store') }}" role="form"
+                        enctype="multipart/form-data">
+                        @csrf
 
-                        </form>
-                    </div>
+                        @include('tipo-equipo.form')
+
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+
+    </div>
+    </div>
+</section>
 @endsection

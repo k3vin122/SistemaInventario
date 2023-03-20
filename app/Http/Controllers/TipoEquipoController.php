@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\TipoEquipo;
+use App\Proveedore;
+
 use Illuminate\Http\Request;
 
 /**
@@ -18,9 +20,10 @@ class TipoEquipoController extends Controller
      */
     public function index()
     {
+        $caountTipo= TipoEquipo::count();
         $tipoEquipos = TipoEquipo::paginate();
 
-        return view('tipo-equipo.index', compact('tipoEquipos'))
+        return view('tipo-equipo.index', compact('tipoEquipos','caountTipo'))
             ->with('i', (request()->input('page', 1) - 1) * $tipoEquipos->perPage());
     }
 
@@ -31,8 +34,12 @@ class TipoEquipoController extends Controller
      */
     public function create()
     {
+
+
+        $Proveedores = Proveedore::pluck('id','nombre');
+
         $tipoEquipo = new TipoEquipo();
-        return view('tipo-equipo.create', compact('tipoEquipo'));
+        return view('tipo-equipo.create', compact('tipoEquipo','Proveedores'));
     }
 
     /**

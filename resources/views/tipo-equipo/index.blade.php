@@ -16,6 +16,9 @@
                                 {{ __('Tipo Equipo') }}
                             </span>
 
+                            <h4 class="mb-0">Total Registros : {{$caountTipo}}</h4>
+
+
                              <div class="float-right">
                                 <a href="{{ route('tipo-equipos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Nuevo Registro') }}

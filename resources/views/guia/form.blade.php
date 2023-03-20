@@ -7,13 +7,15 @@
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id_proveedor') }}
-            {{ Form::text('id_proveedor', $guia->id_proveedor, ['class' => 'form-control' . ($errors->has('id_proveedor') ? ' is-invalid' : ''), 'placeholder' => 'Id Proveedor']) }}
+            {{ Form::label('Proveedor') }}
+            {{ Form::select('id_proveedor',$x1, $guia->id_proveedor, ['class' => 'form-control' . ($errors->has('id_proveedor') ? ' is-invalid' : ''), 'placeholder' => '----']) }}
             {!! $errors->first('id_proveedor', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <br>
+    <br>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </div>
 </div>

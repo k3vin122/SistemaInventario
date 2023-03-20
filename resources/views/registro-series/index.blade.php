@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('registro-series.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear nuevo Registro') }}
                                 </a>
                               </div>
                         </div>
@@ -34,10 +34,9 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
                                         
-										<th>Serie</th>
-										<th>Id Guia</th>
+										<th>N° serie</th>
+										<th>N° Guía</th>
 
                                         <th></th>
                                     </tr>
@@ -45,18 +44,16 @@
                                 <tbody>
                                     @foreach ($registroSeries as $registroSeries)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
                                             
 											<td>{{ $registroSeries->serie }}</td>
-											<td>{{ $registroSeries->id_guia }}</td>
+											<td>{{ $registroSeries->guia->nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('registro-series.destroy',$registroSeries->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('registro-series.show',$registroSeries->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('registro-series.edit',$registroSeries->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('registro-series.edit',$registroSeries->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

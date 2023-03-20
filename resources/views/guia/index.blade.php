@@ -16,9 +16,11 @@
                                 {{ __('Guia') }}
                             </span>
 
+                            <h4 class="mb-0">Guias Registradas : {{$countgia}}</h4>
+
                              <div class="float-right">
                                 <a href="{{ route('guias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Nuevo Registro') }}
                                 </a>
                               </div>
                         </div>
@@ -34,10 +36,10 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>Id</th>
                                         
-										<th>Nombre</th>
-										<th>Id Proveedor</th>
+										<th>Code</th>
+										<th>Proveedor</th>
 
                                         <th></th>
                                     </tr>
@@ -48,15 +50,14 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $guia->nombre }}</td>
-											<td>{{ $guia->id_proveedor }}</td>
+											<td>{{ $guia->Proveedore->nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('guias.destroy',$guia->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('guias.show',$guia->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('guias.edit',$guia->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('guias.edit',$guia->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>
