@@ -11,10 +11,12 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">Create Registro Series</span>
-                    </div>
+                
+            <div class="card card-default">
+                <h1>Importar N° serie equipos </h1>
+
+                <span class="card-title"><i>¡Importe libros de trabajo .xlsx</i> </span>
+            </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('registro-series.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf

@@ -34,6 +34,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Imports\\RegistroImport' => $baseDir . '/app/Imports/RegistroImport.php',
     'App\\Imports\\RegistroSerieImport' => $baseDir . '/app/Imports/RegistroSerieImport.php',
     'App\\Inventario' => $baseDir . '/app/Inventario.php',
     'App\\Marca' => $baseDir . '/app/Marca.php',

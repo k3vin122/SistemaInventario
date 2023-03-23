@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\RegistroSeries;
 use Illuminate\Http\Request;
 use App\Imports\RegistroSerieImport;
-use App\Excel;
 
-
-
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class RegistroSeriesController
@@ -16,22 +14,6 @@ use App\Excel;
  */
 class RegistroSeriesController extends Controller
 {
-
-
- /**
-     * Display a listing of the resource.
-     *subir archivo con carga de numeros de serie 
-
-     */
-
-  
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $registroSeries = RegistroSeries::paginate(10);
@@ -40,55 +22,28 @@ class RegistroSeriesController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $registroSeries->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+   
+    public function create(Request $request)
     {
         $registroSeries = new RegistroSeries();
+
+      
+
         return view('registro-series.create', compact('registroSeries'));
     }
 
+
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+    * Metodo que nos permite importar data deacuerdo a un modelo de archivo.
+    */
+    
     public function store(Request $request)
     {
 
-
-        /**
-     * Store a newly created resource in storage.
-       *request()->validate(RegistroSeries::$rules);
-
-       * $registroSeries = RegistroSeries::create($request->all());
-
-        *return redirect()->route('registro-series.index')
-           * ->with('success', 'RegistroSeries created successfully.');
-     */
-
-    if ($request->hasFile('import_file')){
-        $ruta = $request->file('import_file')->getRealPath();
-        $datos = Excel::load('$ruta', function($leedor){
-        })->get();
-
-        if(!empty($datos) && $datos->count()){
-           $datos = $datos->toArray();
-           for($i=0; $i< count($datos); $i++){
-            $datosImportar =$datos[$i];
-
-           }
-            
-        }
-        $registroSeries::insert($datosImportar);
-    }
-
-    return back();
-
+        Excel::import( new RegistroSerieImport, $request->file );
+        return ('datos registrados');
+        
     }
 
     /**
@@ -146,4 +101,8 @@ class RegistroSeriesController extends Controller
         return redirect()->route('registro-series.index')
             ->with('success', 'RegistroSeries deleted successfully');
     }
+
+   
+    
+   
 }
