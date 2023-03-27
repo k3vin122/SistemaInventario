@@ -55,7 +55,7 @@ class TipoEquipoController extends Controller
         $tipoEquipo = TipoEquipo::create($request->all());
 
         return redirect()->route('tipo-equipos.index')
-            ->with('success', 'TipoEquipo created successfully.');
+            ->with('success', 'TipoEquipo creado con éxito.');
     }
 
     /**
@@ -98,7 +98,7 @@ class TipoEquipoController extends Controller
         $tipoEquipo->update($request->all());
 
         return redirect()->route('tipo-equipos.index')
-            ->with('success', 'TipoEquipo updated successfully');
+            ->with('success', 'TipoEquipo actualizado con éxito');
     }
 
     /**
@@ -111,6 +111,6 @@ class TipoEquipoController extends Controller
         $tipoEquipo = TipoEquipo::find($id)->delete();
 
         return redirect()->route('tipo-equipos.index')
-            ->with('success', 'TipoEquipo deleted successfully');
+            ->with('success', 'TipoEquipo borrado exitosamente');
     }
 }

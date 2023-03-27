@@ -48,7 +48,7 @@ class OrdeneController extends Controller
         $ordene = Ordene::create($request->all());
 
         return redirect()->route('ordenes.index')
-            ->with('success', 'Ordene created successfully.');
+            ->with('success', 'Ordene creado con éxito.');
     }
 
     /**
@@ -91,7 +91,7 @@ class OrdeneController extends Controller
         $ordene->update($request->all());
 
         return redirect()->route('ordenes.index')
-            ->with('success', 'Ordene updated successfully');
+            ->with('success', 'Ordene actualizado con éxito');
     }
 
     /**
@@ -104,6 +104,6 @@ class OrdeneController extends Controller
         $ordene = Ordene::find($id)->delete();
 
         return redirect()->route('ordenes.index')
-            ->with('success', 'Ordene deleted successfully');
+            ->with('success', 'Ordene borrado exitosamente');
     }
 }

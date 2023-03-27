@@ -53,7 +53,7 @@ class GuiaController extends Controller
         $guia = Guia::create($request->all());
 
         return redirect()->route('guias.index')
-            ->with('success', 'Guia created successfully.');
+            ->with('success', 'Guia creado con éxito.');
     }
 
     /**
@@ -96,7 +96,7 @@ class GuiaController extends Controller
         $guia->update($request->all());
 
         return redirect()->route('guias.index')
-            ->with('success', 'Guia updated successfully');
+            ->with('success', 'Guia actualizado con éxito');
     }
 
     /**
@@ -109,6 +109,6 @@ class GuiaController extends Controller
         $guia = Guia::find($id)->delete();
 
         return redirect()->route('guias.index')
-            ->with('success', 'Guia deleted successfully');
+            ->with('success', 'Guia borrado exitosamente');
     }
 }

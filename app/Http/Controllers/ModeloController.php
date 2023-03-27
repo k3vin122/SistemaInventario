@@ -49,7 +49,7 @@ class ModeloController extends Controller
         $modelo = Modelo::create($request->all());
 
         return redirect()->route('modelos.index')
-            ->with('success', 'Modelo created successfully.');
+            ->with('success', 'Modelo creado con éxito.');
     }
 
     /**
@@ -92,7 +92,7 @@ class ModeloController extends Controller
         $modelo->update($request->all());
 
         return redirect()->route('modelos.index')
-            ->with('success', 'Modelo updated successfully');
+            ->with('success', 'Modelo actualizado con éxito');
     }
 
     /**
@@ -105,6 +105,6 @@ class ModeloController extends Controller
         $modelo = Modelo::find($id)->delete();
 
         return redirect()->route('modelos.index')
-            ->with('success', 'Modelo deleted successfully');
+            ->with('success', 'borrado exitosamente');
     }
 }

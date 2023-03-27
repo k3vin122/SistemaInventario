@@ -17,6 +17,13 @@ use Illuminate\Http\Request;
 
 
 Auth::routes();
+
+
+
+
+
+
+
 Route::get('/',function(){return view('auth.login');});
 
 
@@ -24,14 +31,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::resource('inventarios', App\Http\Controllers\InventarioController::class);
-Route::resource('marcas', App\Http\Controllers\MarcaController::class);
-Route::resource('modelos', App\Http\Controllers\ModeloController::class);
-Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class);
-Route::resource('tipo-equipos', App\Http\Controllers\TipoEquipoController::class);
+Route::resource('inventarios', App\Http\Controllers\InventarioController::class)->middleware('auth');
+Route::resource('marcas', App\Http\Controllers\MarcaController::class)->middleware('auth');
+Route::resource('modelos', App\Http\Controllers\ModeloController::class)->middleware('auth');
+Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class)->middleware('auth');
+Route::resource('tipo-equipos', App\Http\Controllers\TipoEquipoController::class)->middleware('auth');
 
 
 
-Route::resource('registro-series', App\Http\Controllers\RegistroSeriesController::class);
-Route::resource('guias', App\Http\Controllers\GuiaController::class);
-Route::resource('ordenes', App\Http\Controllers\OrdeneController::class);
+Route::resource('registro-series', App\Http\Controllers\RegistroSeriesController::class)->middleware('auth');
+Route::resource('guias', App\Http\Controllers\GuiaController::class)->middleware('auth');
+Route::resource('ordenes', App\Http\Controllers\OrdeneController::class)->middleware('auth');
