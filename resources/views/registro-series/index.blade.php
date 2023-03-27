@@ -13,8 +13,11 @@ Registro Series
                     <div style="display: flex; justify-content: space-between; align-items: center;">
 
                         <span id="card_title">
-                            {{ __('Registro Series') }}
+                            {{ __('Registro  serie equipo') }}
                         </span>
+
+                        <h4 class="mb-0">Equipos Registrados en sistema  : {{$countregistroSeries}}</h4>
+
 
                         <div class="float-right">
                             <a href="{{ route('registro-series.create') }}" class="btn btn-primary btn-sm float-right"
@@ -22,9 +25,28 @@ Registro Series
                                 {{ __('Importar documento') }}
                             </a>
                         </div>
-                        
-                      
                     </div>
+
+
+
+                    <span id="card_title">
+                        <div class="panel panel-success">
+                            <form action="{{route('registro-series.index')}}" method="GET" class="d-flex">
+                                <div class="d-flex justify-content-center h-100">
+                                    <div class="searchbar">
+                                        <input class="search_input" type="text" name="busqueda"
+                                            placeholder="">
+                                        <input class="search_icon" value="Buscar" type="submit">
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </span>
+
+
+
                 </div>
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -45,17 +67,18 @@ Registro Series
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($registroSeries as $registroSeries)
+                                @foreach ($registroSeries as $x1)
+
                                 <tr>
 
-                                    <td>{{ $registroSeries->serie }}</td>
-                                    <td>{{ $registroSeries->guia->nombre }}</td>
+                                    <td>{{ $x1->serie }}</td>
+                                    <td>{{ $x1->guia->nombre }}</td>
 
                                     <td>
-                                        <form action="{{ route('registro-series.destroy',$registroSeries->id) }}"
+                                        <form action="{{ route('registro-series.destroy',$x1->id) }}"
                                             method="POST">
                                             <a class="btn btn-sm btn-success"
-                                                href="{{ route('registro-series.edit',$registroSeries->id) }}"><i
+                                                href="{{ route('registro-series.edit',$x1->id) }}"><i
                                                     class="fa fa-fw fa-edit"></i> Editar</a>
                                             @csrf
                                             @method('DELETE')
@@ -70,6 +93,8 @@ Registro Series
                     </div>
                 </div>
             </div>
+            {!! $registroSeries->appends(['busqueda_inventario']) !!}
+
         </div>
     </div>
 </div>

@@ -16,10 +16,23 @@ class ProveedoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $countproveedor = Proveedore::count();
-        $proveedores = Proveedore::paginate();
+        $busqueda_inventario =  $request->busqueda;
+
+        
+        $proveedores = Proveedore::where('nombre','LIKE','%'.$busqueda_inventario.'%')
+        ->orWhere('direccion','LIKE','%'.$busqueda_inventario.'%')
+        ->orWhere('rol','LIKE','%'.$busqueda_inventario.'%')
+        ->latest('id')
+        ->paginate(7);
+        $data = [
+            'proveedores'=>$proveedores,
+            'busqueda_inventario'=>$busqueda_inventario,
+        ];
+
+
 
         return view('proveedore.index', compact('proveedores','countproveedor'))
             ->with('i', (request()->input('page', 1) - 1) * $proveedores->perPage());

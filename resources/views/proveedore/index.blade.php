@@ -26,6 +26,22 @@ Proveedore
                             </a>
                         </div>
                     </div>
+
+                    <span id="card_title">
+                        <div class="panel panel-success">
+                            <form action="{{route('proveedores.index')}}" method="GET" class="d-flex">
+                                <div class="d-flex justify-content-center h-100">
+                                    <div class="searchbar">
+                                        <input class="search_input" type="text" name="busqueda"
+                                            placeholder="">
+                                        <input class="search_icon" value="Buscar" type="submit">
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </span>
                 </div>
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -71,7 +87,10 @@ Proveedore
                     </div>
                 </div>
             </div>
-            {!! $proveedores->links() !!}
+            {!! $proveedores->appends(['busqueda_inventario']) !!}
+
+
+
         </div>
     </div>
 </div>

@@ -35,6 +35,8 @@ class InventarioController extends Controller
                             ->orWhere('recinto','LIKE','%'.$busqueda_inventario.'%')
                             ->orWhere('ip','LIKE','%'.$busqueda_inventario.'%')
                             ->orWhere('entrega','LIKE','%'.$busqueda_inventario.'%')
+                            ->orWhere('recepciona','LIKE','%'.$busqueda_inventario.'%')
+
                             ->latest('id')
                             ->paginate(7);
                             $data = [

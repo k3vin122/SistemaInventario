@@ -18,11 +18,21 @@ class GuiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $countgia = Guia::count();
-        $guias = Guia::paginate();
+
+        $busqueda_inventario =  $request->busqueda;
+
+        $guias = Guia::where('nombre','LIKE','%'.$busqueda_inventario.'%')
+        ->orWhere('id_proveedor','LIKE','%'.$busqueda_inventario.'%')
+        ->latest('id')
+        ->paginate(7);
+        $data = [
+            'guias'=>$guias,
+            'busqueda_inventario'=>$busqueda_inventario,
+        ];
 
         return view('guia.index', compact('guias','countgia'))
             ->with('i', (request()->input('page', 1) - 1) * $guias->perPage());

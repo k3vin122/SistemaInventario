@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Ordene;
+use App\Guia;
+
+
+
 use Illuminate\Http\Request;
 
 /**
@@ -16,11 +20,25 @@ class OrdeneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ordenes = Ordene::paginate();
 
-        return view('ordene.index', compact('ordenes'))
+        $countordenes = Ordene::count();
+
+
+             /**Busqueda de registros Ordenes*/
+             $busqueda_inventario =  $request->busqueda;
+             $ordenes = Ordene::where('nombre','LIKE','%'.$busqueda_inventario.'%')
+                                 ->orWhere('id_guia','LIKE','%'.$busqueda_inventario.'%')
+                                 ->latest('id')
+                                 ->paginate(7);
+                                 $data = [
+                                     'ordenes'=>$ordenes,
+                                     'busqueda_inventario'=>$busqueda_inventario,
+                                 ];
+
+
+        return view('ordene.index', compact('ordenes','countordenes'))
             ->with('i', (request()->input('page', 1) - 1) * $ordenes->perPage());
     }
 
@@ -32,7 +50,9 @@ class OrdeneController extends Controller
     public function create()
     {
         $ordene = new Ordene();
-        return view('ordene.create', compact('ordene'));
+        $guias = Guia::pluck('nombre','id');
+
+        return view('ordene.create', compact('ordene','guias'));
     }
 
     /**

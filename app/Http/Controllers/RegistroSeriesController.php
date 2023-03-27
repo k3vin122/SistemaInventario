@@ -14,20 +14,31 @@ use Maatwebsite\Excel\Facades\Excel;
  */
 class RegistroSeriesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $registroSeries = RegistroSeries::paginate(10);
+        $countregistroSeries = RegistroSeries::count();
 
-        return view('registro-series.index', compact('registroSeries'))
+        $busqueda_inventario =  $request->busqueda;
+
+        $registroSeries = RegistroSeries::where('serie','LIKE','%'.$busqueda_inventario.'%')
+        ->orWhere('id_guia','LIKE','%'.$busqueda_inventario.'%')
+        ->latest('id')
+        ->paginate(7);
+        $data = [
+            'registroSeries'=>$registroSeries,
+            'busqueda_inventario'=>$busqueda_inventario,
+        ];
+
+        return view('registro-series.index', compact('registroSeries','countregistroSeries'))
             ->with('i', (request()->input('page', 1) - 1) * $registroSeries->perPage());
     }
 
-   
+
     public function create(Request $request)
     {
         $registroSeries = new RegistroSeries();
 
-      
+
 
         return view('registro-series.create', compact('registroSeries'));
     }
@@ -37,13 +48,13 @@ class RegistroSeriesController extends Controller
     /**
     * Metodo que nos permite importar data deacuerdo a un modelo de archivo.
     */
-    
+
     public function store(Request $request)
     {
 
         Excel::import( new RegistroSerieImport, $request->file );
         return ('datos registrados');
-        
+
     }
 
     /**
@@ -86,7 +97,7 @@ class RegistroSeriesController extends Controller
         $registroSeries->update($request->all());
 
         return redirect()->route('registro-series.index')
-            ->with('success', 'RegistroSeries updated successfully');
+            ->with('success', 'RegistroSeries Datos actualizados');
     }
 
     /**
@@ -99,10 +110,10 @@ class RegistroSeriesController extends Controller
         $registroSeries = RegistroSeries::find($id)->delete();
 
         return redirect()->route('registro-series.index')
-            ->with('success', 'RegistroSeries deleted successfully');
+            ->with('success', 'RegistroSeries Datos eliminados');
     }
 
-   
-    
-   
+
+
+
 }

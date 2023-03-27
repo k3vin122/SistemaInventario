@@ -12,16 +12,34 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                            <span id="card_title">
-                                {{ __('Ordene') }}
-                            </span>
+                                <h1> Ordenes de compras</h1>
+
+                                <h4 class="mb-0">Total Ordenes Ingresadas : {{$countordenes}}</h4>
+
+
 
                              <div class="float-right">
                                 <a href="{{ route('ordenes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Nuevo Registro') }}
                                 </a>
                               </div>
                         </div>
+
+                        <span id="card_title">
+                            <div class="panel panel-success">
+                                <form action="{{route('ordenes.index')}}" method="GET" class="d-flex">
+                                    <div class="d-flex justify-content-center h-100">
+                                        <div class="searchbar">
+                                            <input class="search_input" type="text" name="busqueda"
+                                                placeholder="">
+                                            <input class="search_icon" value="Buscar" type="submit">
+
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </span>
                     </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
@@ -34,10 +52,9 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
+
 										<th>Nombre</th>
-										<th>Id Guia</th>
+										<th>N° Guia</th>
 
                                         <th></th>
                                     </tr>
@@ -45,18 +62,16 @@
                                 <tbody>
                                     @foreach ($ordenes as $ordene)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $ordene->nombre }}</td>
-											<td>{{ $ordene->id_guia }}</td>
+											<td>{{ $ordene->guia->nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('ordenes.destroy',$ordene->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('ordenes.show',$ordene->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('ordenes.edit',$ordene->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('ordenes.edit',$ordene->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -66,7 +81,8 @@
                         </div>
                     </div>
                 </div>
-                {!! $ordenes->links() !!}
+                {!! $ordenes->appends(['busqueda_inventario']) !!}
+
             </div>
         </div>
     </div>
