@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,3 @@ Route::resource('tipo-equipos', App\Http\Controllers\TipoEquipoController::class
 Route::resource('registro-series', App\Http\Controllers\RegistroSeriesController::class);
 Route::resource('guias', App\Http\Controllers\GuiaController::class);
 Route::resource('ordenes', App\Http\Controllers\OrdeneController::class);
-
