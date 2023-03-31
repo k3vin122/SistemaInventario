@@ -1,4 +1,4 @@
-@extends('layouts.dashboardBase')
+@extends('layouts.home')
 
 @section('template_title')
     {{ $registroSeries->name ?? 'Show Registro Series' }}

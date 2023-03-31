@@ -93,8 +93,10 @@ class OrdeneController extends Controller
     public function edit($id)
     {
         $ordene = Ordene::find($id);
+        $guias = Guia::pluck('nombre','id');
 
-        return view('ordene.edit', compact('ordene'));
+
+        return view('ordene.edit', compact('ordene','guias'));
     }
 
     /**

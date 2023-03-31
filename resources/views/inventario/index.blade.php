@@ -1,4 +1,4 @@
-@extends('layouts.dashboardBase')
+@extends('layouts.home')
 
 @section('template_title')
 Inventario
@@ -21,7 +21,7 @@ Inventario
                                     <div class="d-flex justify-content-center h-100">
                                         <div class="searchbar">
                                             <input class="search_input" type="text" name="busqueda"
-                                                placeholder="Search...">
+                                                placeholder="">
                                             <input class="search_icon" value="Buscar" type="submit">
 
                                         </div>

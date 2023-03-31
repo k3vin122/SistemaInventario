@@ -54,14 +54,12 @@ class InventarioController extends Controller
      */
     public function create(Request $request)
     {
-        $ip_local =  $request->ip();
-
         $inventario = new Inventario();
         $marcas = Marca::pluck('nombre','id');
         $modelos = Modelo::pluck('nombre','id');
         $TipoEquipos = TipoEquipo::pluck('nombre','id');
         $series = RegistroSeries::all();
-        return view('inventario.create', compact('inventario','marcas','modelos','TipoEquipos','series','ip_local'));
+        return view('inventario.create', compact('inventario','marcas','modelos','TipoEquipos','series'));
     }
 
     /**

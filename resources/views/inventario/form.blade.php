@@ -38,7 +38,6 @@
                         {{ Form::text('ip', $inventario->ip, ['class' => 'form-control' . ($errors->has('ip') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese Dirección IP']) }}
                         {!! $errors->first('ip', '<div class="invalid-feedback">:message</div>') !!}
                         <br>
-                        <mark>Ip local: {{$ip_local}}</mark>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-@extends('layouts.dashboardBase')
+@extends('layouts.home')
 
 @section('template_title')
 Create Marca
@@ -15,7 +15,8 @@ Create Marca
                 <div class="card-header">
                     <h1> Crear Nuevo Marca</h1>
 
-                    <span class="card-title">Aquí en este módulo podrás agregar un nuevo marca de equipo para ser utilizado en
+                    <span class="card-title">Aquí en este módulo podrás agregar un nuevo marca de equipo para ser
+                        utilizado en
                         registro de inventario.</span>
                 </div>
                 <div class="card-body">
@@ -25,7 +26,14 @@ Create Marca
                         @include('marca.form')
 
                     </form>
+
+
                 </div>
+
+
+
+
+
             </div>
         </div>
     </div>
