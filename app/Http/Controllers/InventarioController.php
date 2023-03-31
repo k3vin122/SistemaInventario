@@ -8,6 +8,11 @@ use App\Modelo;
 use App\TipoEquipo;
 use App\RegistroSeries;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
+
+
 
 /**
  * Class InventarioController
@@ -55,11 +60,18 @@ class InventarioController extends Controller
     public function create(Request $request)
     {
         $inventario = new Inventario();
+
+
+
+        $users = User::pluck('name');
+
+
+
         $marcas = Marca::pluck('nombre','id');
         $modelos = Modelo::pluck('nombre','id');
         $TipoEquipos = TipoEquipo::pluck('nombre','id');
         $series = RegistroSeries::all();
-        return view('inventario.create', compact('inventario','marcas','modelos','TipoEquipos','series'));
+        return view('inventario.create', compact('inventario','marcas','modelos','TipoEquipos','series','users'));
     }
 
     /**

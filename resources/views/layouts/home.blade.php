@@ -186,10 +186,11 @@
                                                 </span></a>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="#">Perfil</a>
-                                                <a class="dropdown-item" href="#">Configuración</a>
                                                 <a class="dropdown-item" href="#">Ayuda</a>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"><span> Cerrar
                                                         sesion</span> <i class="fa fa-sign-out"></i></a>
+
+                                                        
                                             </div>
                                         </li>
                                 </div>
