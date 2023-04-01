@@ -3,8 +3,6 @@
 
 <head>
     @stack('head')
-
-
     <!-- basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +23,6 @@
     <!-- site css -->
     <link href="{{asset('polo/style.css')}}" rel="stylesheet" />
 
-
     <!-- responsive css -->
     <link href="{{asset('polo/css/responsive.css')}}" rel="stylesheet" />
 
@@ -45,7 +42,18 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+
     @yield('scripts')
+    <!-- graficos HIGCHARTS -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <!-- Fin -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
 
     <!-- select2 estilos-->
     <link href="{{asset('Select/css/select2.min.css')}}" rel="stylesheet" />
@@ -54,6 +62,27 @@
     <!--estilos botones-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+
+    <!-- select2 estilos-->
+    <link href="{{asset('Select/css/select2.min.css')}}" rel="stylesheet" />
+
+
+    <!--estilos botones-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+
+
+    <!--Estilos SELECT2 ADEMAS DE JQUERY-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    {{-- selec2 cdn --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
@@ -190,7 +219,7 @@
                                                 <a class="dropdown-item" href="{{ route('logout') }}"><span> Cerrar
                                                         sesion</span> <i class="fa fa-sign-out"></i></a>
 
-                                                        
+
                                             </div>
                                         </li>
                                 </div>
@@ -253,8 +282,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"
         integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
     <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -266,6 +293,8 @@
     </script>
 
 
+
+
     <!--estilos select2-->
     <script src="Select/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -273,6 +302,11 @@
 
     <!--estilos select2-->
     <script src="Select/js/select2.min.js"></script>
+
+
+    
+
+
     @yield('headers')
 
 </body>

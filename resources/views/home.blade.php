@@ -1,9 +1,9 @@
 @extends('layouts.home')
-
 @section('content')
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<!--Comienzo del  contenido -->
+<?php
+require_once "../resources/views/_db.php";
+?>
 
 <div class="row column1">
     <div class="col-md-6 col-lg-3">
@@ -69,40 +69,27 @@
     </div>
 </div>
 
-
-
-
-
 <div class="row column1">
 
+    <div class="col-lg-6" style="width: 800px; height: 300px;">
+        <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head">
+                <h2>Equipos Entregados Por Funcionario</h2>
+                <div id="piechart" ></div>
+            </div>
+        </div>
+    </div>
+
     <div class="col-lg-6">
         <div class="white_shd full margin_bottom_30">
             <div class="full graph_head">
-                <div class="heading1 margin_0">
-                    <h2>Equipos Instalados Por Depto</h2>
-                </div>
-            </div>
-            <div class="map_section padding_infor_info">
-                {!! $chart->renderHtml() !!}
-
+                <h2>Proveedores</h2>
             </div>
         </div>
     </div>
 
 
 
-    <div class="col-lg-6">
-        <div class="white_shd full margin_bottom_30">
-            <div class="full graph_head">
-                <div class="heading1 margin_0">
-                    <h2>Proveedores</h2>
-                </div>
-            </div>
-            <div class="map_section padding_infor_info">
-                {!! $chart1->renderHtml() !!}
-            </div>
-        </div>
-    </div>
     <div class="col-lg-6">
         <div class="white_shd full margin_bottom_30">
             <div class="full graph_head">
@@ -111,12 +98,55 @@
                 </div>
             </div>
             <div class="map_section padding_infor_info">
-                {!! $chart2->renderHtml() !!}
             </div>
         </div>
     </div>
-    {!! $chart->renderChartJsLibrary() !!}
-    {!! $chart->renderJs() !!}
-    {!! $chart1->renderJs() !!}
-    {!! $chart2->renderJs() !!}
+
+
+
+    <!--Script de garficos-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+    <!--  Grafico Marcas -->
+
+
+    <script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            <?php
+          $SQL = "SELECT entrega, COUNT(*) as Total FROM inventarios  GROUP BY entrega";
+          $consulta = mysqli_query($conexion, $SQL);
+          while ($resultado = mysqli_fetch_assoc($consulta)){
+            echo "['" .$resultado['entrega']."', " .$resultado['Total']."],";
+          }
+
+?>
+        ]);
+
+        var options = {
+            title: 'Hospiatl puerto Montt'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+    </script>
+
+
+
+
+
+    <!-- Script del grafico Usuarios registros  -->
+
+
+
     @endsection
