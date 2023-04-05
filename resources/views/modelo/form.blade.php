@@ -10,6 +10,11 @@
     </div>
     <br>
     <div class="text-center">
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div style="display: inline-block;">
+            <a href="{{ route('modelos.index') }}" class="button button2">Volver</a>
+        </div>
+        <div style="display: inline-block;">
+            <button type="submit" class="button button3">Guardar</button>
+        </div>
     </div>
 </div>

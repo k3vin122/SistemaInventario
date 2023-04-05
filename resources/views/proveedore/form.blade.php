@@ -7,7 +7,7 @@
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('direccion') }}
+            {{ Form::label('Dirección') }}
             {{ Form::text('direccion', $proveedore->direccion, ['class' => 'form-control' . ($errors->has('direccion') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese dirección']) }}
             {!! $errors->first('direccion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -20,6 +20,11 @@
     </div>
     <br>
     <div class="text-center">
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div style="display: inline-block;">
+            <a href="{{ route('proveedores.index') }}" class="button button2">Volver</a>
+        </div>
+        <div style="display: inline-block;">
+            <button type="submit" class="button button3">Guardar</button>
+        </div>
     </div>
 </div>

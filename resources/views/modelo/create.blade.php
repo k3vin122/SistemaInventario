@@ -15,8 +15,7 @@ Create Modelo
             <div class="card card-default">
                 <h1>Registrar Nuevo Modelo</h1>
 
-                <span class="card-title"><i>Aquí podremos registra un nuevo modelo, este nos sirvira a la hora de
-                        registra un equipo</i> </span>
+            
             </div>
 
             <div class="card-body">

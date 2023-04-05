@@ -14,8 +14,11 @@
                     <div class="col-md-6 mb-md-0 mb-4">
                         {{ Form::label('N° Inventario') }}
                         {{ Form::text('n_invenatario', $inventario->n_invenatario, ['class' => 'form-control' . ($errors->has('n_invenatario') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese Inventario']) }}
-                        {!! $errors->first('n_invenatario', '<div class="invalid-feedback">:message
-                        </div>') !!}
+                        {!! $errors->first(
+                            'n_invenatario',
+                            '<div class="invalid-feedback">:message
+                                                                                                </div>',
+                        ) !!}
                     </div>
                     <div class="col-md-6">
                         {{ Form::label('Depto') }}
@@ -30,8 +33,7 @@
                     <div class="col-md-6">
                         {{ Form::label('recinto') }}
                         {{ Form::text('recinto', $inventario->recinto, ['class' => 'form-control' . ($errors->has('recinto') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese Recinto']) }}
-                        {!! $errors->first('recinto', '<div class="invalid-feedback">:message</div>')
-                        !!}
+                        {!! $errors->first('recinto', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-md-6">
                         {{ Form::label('Ip') }}
@@ -57,18 +59,15 @@
                     <div class="col-md-6 mb-md-0 mb-4">
                         {{ Form::label('recepciona') }}
                         {{ Form::text('recepciona', $inventario->recepciona, ['class' => 'form-control' . ($errors->has('recepciona') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese Su Nombre']) }}
-                        {!! $errors->first('recepciona', '<div class="invalid-feedback">:message</div>')
-                        !!}
+                        {!! $errors->first('recepciona', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-md-6">
                         <select class="js-example-basic-single js-states form-control" id="entrega" name="entrega">
-                            @foreach(App\Models\User::get() as $user)
-                            <option value='{{ $user->name }}'>{{ $user->name }}</option>
+                            @foreach (App\Models\User::get() as $user)
+                                <option value='{{ $user->name }}'>{{ $user->name }}</option>
                             @endforeach
                         </select>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -92,48 +91,52 @@
                         <select class="js-example-basic-single js-states form-control" id="select2"
                             name="id_registroSerie">
                             @foreach ($series as $series)
-                            <option value="{{ $series->id }}">{{ $series->serie }}</option>
+                                <option value="{{ $series->id }}">{{ $series->serie }}</option>
                             @endforeach
                         </select>
                         {!! $errors->first('id_registroSerie', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-md-6">
                         {{ Form::label('Clase de Equipo') }}
-                        {{ Form::select('id_tipoEquipo',$TipoEquipos, $inventario->id_tipoEquipo, ['class' => 'form-control' . ($errors->has('id_tipoEquipo') ? ' is-invalid' : ''), 'placeholder' => '----']) }}
+                        {{ Form::select('id_tipoEquipo', $TipoEquipos, $inventario->id_tipoEquipo, ['class' => 'form-control' . ($errors->has('id_tipoEquipo') ? ' is-invalid' : ''), 'placeholder' => '----']) }}
                         {!! $errors->first('id_tipoEquipo', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-md-6">
                         {{ Form::label('Modelo') }}
-                        {{ Form::select('id_modelo',$modelos, $inventario->id_modelo, ['class' => 'form-control' . ($errors->has('id_modelo') ? ' is-invalid' : ''), 'placeholder' => '----']) }}
+                        {{ Form::select('id_modelo', $modelos, $inventario->id_modelo, ['class' => 'form-control' . ($errors->has('id_modelo') ? ' is-invalid' : ''), 'placeholder' => '----']) }}
                         {!! $errors->first('id_modelo', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-md-6">
                         {{ Form::label('Marca') }}
-                        {{ Form::select('id_marca',$marcas, $inventario->id_marca, ['class' => 'form-control' . ($errors->has('id_marca') ? ' is-invalid' : ''), 'placeholder' => '----']) }}
+                        {{ Form::select('id_marca', $marcas, $inventario->id_marca, ['class' => 'form-control' . ($errors->has('id_marca') ? ' is-invalid' : ''), 'placeholder' => '----']) }}
                         {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                 </div>
                 <br>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <div style="display: inline-block;">
+                        <a href="{{ route('inventarios.index') }}" class="button button2">Volver</a>
+                    </div>
+
+                    <div style="display: inline-block;">
+                        <button type="submit" class="button button3">Guardar</button>
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-    @section('scripts')
+</div>
+@section('scripts')
     <script>
-    $(document).ready(function() {
-        $('#select2').select2();
-        $('#select2').on(change),
-            function(e) {
-                let valor = $('#select2').select2('val');
-                let texto = $('#select2 option:selected').texto();
-            }
-    });
+        $(document).ready(function() {
+            $('#select2').select2();
+            $('#select2').on(change),
+                function(e) {
+                    let valor = $('#select2').select2('val');
+                    let texto = $('#select2 option:selected').texto();
+                }
+        });
     </script>
-
-    @endsection
+@endsection

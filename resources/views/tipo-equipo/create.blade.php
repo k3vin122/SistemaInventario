@@ -14,9 +14,6 @@ Create Tipo Equipo
             <div class="card card-default">
                 <div class="card-header">
                     <h1> Crear Nuevo Tipo de Equipo</h1>
-
-                    <span class="card-title">Aquí en este módulo podrás agregar un nuevo tipo de equipo para ser
-                        utilizado en registro de inventario.</span>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('tipo-equipos.store') }}" role="form"

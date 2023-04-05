@@ -15,28 +15,28 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- site icon -->
-    <link href="{{asset('polo/images/fevicon.png')}}" type="image/png" rel="stylesheet" />
+    <link href="{{ asset('polo/images/fevicon.png') }}" type="image/png" rel="stylesheet" />
 
     <!-- bootstrap css -->
-    <link href="{{asset('polo/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('polo/css/bootstrap.min.css') }}" rel="stylesheet" />
 
     <!-- site css -->
-    <link href="{{asset('polo/style.css')}}" rel="stylesheet" />
+    <link href="{{ asset('polo/style.css') }}" rel="stylesheet" />
 
     <!-- responsive css -->
-    <link href="{{asset('polo/css/responsive.css')}}" rel="stylesheet" />
+    <link href="{{ asset('polo/css/responsive.css') }}" rel="stylesheet" />
 
     <!-- color css -->
-    <link href="{{asset('polo/css/colors.css')}}" rel="stylesheet" />
+    <link href="{{ asset('polo/css/colors.css') }}" rel="stylesheet" />
 
     <!-- select bootstrap -->
-    <link href="{{asset('polo/css/bootstrap-select.css')}}" rel="stylesheet" />
+    <link href="{{ asset('polo/css/bootstrap-select.css') }}" rel="stylesheet" />
 
     <!-- scrollbar css -->
-    <link href="{{asset('polo/css/perfect-scrollbar.css')}}" rel="stylesheet" />
+    <link href="{{ asset('polo/css/perfect-scrollbar.css') }}" rel="stylesheet" />
 
     <!-- custom css -->
-    <link href="{{asset('polo/css/custom.css')}}" rel="stylesheet" />
+    <link href="{{ asset('polo/css/custom.css') }}" rel="stylesheet" />
 
     <script src="https://code.jquery.com/jquery-3.6.4.slim.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -56,7 +56,7 @@
 
 
     <!-- select2 estilos-->
-    <link href="{{asset('Select/css/select2.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('Select/css/select2.min.css') }}" rel="stylesheet" />
 
 
     <!--estilos botones-->
@@ -66,7 +66,7 @@
 
 
     <!-- select2 estilos-->
-    <link href="{{asset('Select/css/select2.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('Select/css/select2.min.css') }}" rel="stylesheet" />
 
 
     <!--estilos botones-->
@@ -84,6 +84,32 @@
     {{-- selec2 cdn --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+
+    {{-- Estilo de boton register --}}
+    <style>
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 5px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button3 {
+            background-color: #ff5722;
+
+        }
+
+        .button2 {
+            background-color: #070707;
+    </style>
+
 </head>
 
 <body class="dashboard dashboard_1">
@@ -95,14 +121,14 @@
                     <div class="sidebar-header">
                         <div class="logo_section">
                             <a href="index.html"><img class="logo_icon img-responsive"
-                                    src="{{asset('polo/images/logo/logo_icon.png')}} " alt="#" /></a>
+                                    src="{{ asset('polo/images/logo/logo_icon.png') }} " alt="#" /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
                         <div class="icon_setting"></div>
                         <div class="user_profle_side">
                             <div class="user_img"><img class="img-responsive"
-                                    src="{{asset('polo/images/layout_img/user.png')}}" alt="#" /></div>
+                                    src="{{ asset('polo/images/layout_img/user.png') }}" alt="#" /></div>
                             <div class="user_info">
                                 <h6>{{ Auth::user()->name }}</h6>
 
@@ -195,23 +221,26 @@
                                     class="fa fa-bars"></i></button>
                             <div class="logo_section">
                                 <a href="index.html"><img class="img-responsive"
-                                        src="{{asset('polo/images/layout_img/hpm.png')}}" alt="#" /></a>
+                                        src="{{ asset('polo/images/layout_img/hpm.png') }}" alt="#" /></a>
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
                                     <ul>
-                                        <li><a href="#"><i class="fa fa-bell-o"></i><span class="badge">2</span></a>
+                                        <li><a href="#"><i class="fa fa-bell-o"></i><span
+                                                    class="badge">2</span></a>
                                         </li>
                                         <li><a href="#"><i class="fa fa-question-circle"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-envelope-o"></i><span class="badge">3</span></a>
+                                        <li><a href="#"><i class="fa fa-envelope-o"></i><span
+                                                    class="badge">3</span></a>
                                         </li>
                                     </ul>
                                     <ul class="user_profile_dd">
                                         <li>
                                             <a class="dropdown-toggle" data-toggle="dropdown"><img
                                                     class="img-responsive rounded-circle"
-                                                    src="{{asset('polo/layout_img/user.png')}}" alt="" /><span
-                                                    class="name_user"> {{ Auth::user()->name }}
+                                                    src="{{ asset('polo/layout_img/user.png') }}"
+                                                    alt="" /><span class="name_user">
+                                                    {{ Auth::user()->name }}
                                                 </span></a>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="#">Perfil</a>
@@ -272,7 +301,7 @@
     <script src="polo/js/perfect-scrollbar.min.js"></script>
 
     <script>
-    var ps = new PerfectScrollbar('#sidebar');
+        var ps = new PerfectScrollbar('#sidebar');
     </script>
     <!-- custom js -->
     <script src="polo/js/chart_custom_style1.js"></script>
@@ -283,13 +312,13 @@
         integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
     </script>
 
 
@@ -304,7 +333,7 @@
     <script src="Select/js/select2.min.js"></script>
 
 
-    
+
 
 
     @yield('headers')

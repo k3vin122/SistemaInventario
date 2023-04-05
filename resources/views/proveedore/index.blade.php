@@ -76,7 +76,7 @@ Proveedore
                                                     class="fa fa-fw fa-edit"></i> Editar</a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i
+                                            <button  disabled="true"type="submit" class="btn btn-danger btn-sm"><i
                                                     class="fa fa-fw fa-trash"></i> Eliminar</button>
                                         </form>
                                     </td>

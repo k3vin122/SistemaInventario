@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Code</th>
-                                        
+
 										<th>Nombre</th>
 
                                         <th></th>
@@ -45,7 +45,7 @@
                                     @foreach ($modelos as $modelo)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $modelo->nombre }}</td>
 
                                             <td>
@@ -53,7 +53,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('modelos.edit',$modelo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button  disabled="true" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

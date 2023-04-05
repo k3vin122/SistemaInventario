@@ -4,8 +4,7 @@
         <div class="input-group-prepend">
         </div>
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile01" name="file"
-                aria-describedby="inputGroupFileAddon01">
+            <input type="file"  id="import_file" name="import_file">
         </div>
     </div>
     <br>
@@ -13,6 +12,6 @@
         <button type="submit" class="btn btn-primary">Importar registros</button>
     </div>
 
-    <a href="/excel-file.xlsx" download="excel-file.xlsx">Descargar Formato de Importación</a>
+    <a  href="{{asset('/excel-file.xlsx')}}"  download="excel-file.xlsx">Descargar Formato de Importación</a>
 
 </div>

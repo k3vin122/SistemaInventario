@@ -53,7 +53,7 @@
                                 <thead class="thead">
                                     <tr>
 
-										<th>Nombre</th>
+										<th>N° Orden</th>
 										<th>N° Guia</th>
 
                                         <th></th>

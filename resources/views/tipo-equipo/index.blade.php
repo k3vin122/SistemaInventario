@@ -38,8 +38,8 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Code</th>
-                                        
-										<th>Nombre</th>
+
+										<th>Tipo</th>
 
                                         <th></th>
                                     </tr>
@@ -48,7 +48,7 @@
                                     @foreach ($tipoEquipos as $tipoEquipo)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $tipoEquipo->nombre }}</td>
 
                                             <td>
@@ -56,7 +56,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('tipo-equipos.edit',$tipoEquipo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button  disabled="true" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

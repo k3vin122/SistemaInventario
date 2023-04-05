@@ -31,7 +31,7 @@ class RegistroSerieImport implements ToModel, WithHeadingRow, WithBatchInserts, 
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-     
+
 
 
     public function model(array $row)

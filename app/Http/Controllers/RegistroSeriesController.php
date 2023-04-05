@@ -51,10 +51,11 @@ class RegistroSeriesController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->file('import_file');
+        Excel::import( new RegistroSerieImport, $file );
 
-        Excel::import( new RegistroSerieImport, $request->file );
-        return ('datos registrados');
-
+        
+        return redirect()->route('registro-series.index');
     }
 
     /**
