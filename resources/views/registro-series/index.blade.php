@@ -20,7 +20,7 @@ Registro Series
 
 
                         <div class="float-right">
-                            <a href="{{ route('registro-series.create') }}" class="btn btn-primary btn-sm float-right"
+                            <a href="{{ route('registro-series.create') }}" class="button button3"
                                 data-placement="left">
                                 {{ __('Importar documento') }}
                             </a>
@@ -77,7 +77,7 @@ Registro Series
                                     <td>
                                         <form action="{{ route('registro-series.destroy',$x1->id) }}"
                                             method="POST">
-                                            <a class="btn btn-sm btn-success"
+                                            <a  disabled="true" class="btn btn-sm btn-success"
                                                 href="{{ route('registro-series.edit',$x1->id) }}"><i
                                                     class="fa fa-fw fa-edit"></i> Editar</a>
                                             @csrf

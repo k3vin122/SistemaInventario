@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Modelo;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\ModeloCreateRequest;
+use App\Http\Requests\ModeloEditRequest;
+
 /**
  * Class ModeloController
  * @package App\Http\Controllers
@@ -42,7 +45,7 @@ class ModeloController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ModeloCreateRequest $request)
     {
         request()->validate(Modelo::$rules);
 

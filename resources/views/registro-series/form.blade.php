@@ -4,14 +4,26 @@
         <div class="input-group-prepend">
         </div>
         <div class="custom-file">
-            <input type="file"  id="import_file" name="import_file">
+            <input type="file" id="import_file" accept=".xlsx" required name="import_file">
+
         </div>
     </div>
     <br>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Importar registros</button>
+
+    <div class="text-center">
+        <div style="display: inline-block;">
+            <a href="{{ route('registro-series.index') }}" class="button button2">Volver</a>
+        </div>
+        <div style="display: inline-block;">
+            <button type="submit" class="button button3">Importar Archivo</button>
+        </div>
     </div>
 
-    <a  href="{{asset('/excel-file.xlsx')}}"  download="excel-file.xlsx">Descargar Formato de Importación</a>
+
+    <a href="{{ asset('/excel-file.xlsx') }}" download="excel-file.xlsx">Descargar Formato de Importación</a>
 
 </div>
+
+
+
+

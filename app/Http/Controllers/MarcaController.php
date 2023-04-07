@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Marca;
 use Illuminate\Http\Request;
 
+
+use App\Http\Requests\MarcaCreateRequest;
+use App\Http\Requests\MarcaEditRequest;
+
 /**
  * Class MarcaController
  * @package App\Http\Controllers
@@ -42,7 +46,7 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MarcaCreateRequest $request)
     {
         request()->validate(Marca::$rules);
 
@@ -85,7 +89,7 @@ class MarcaController extends Controller
      * @param  Marca $marca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Marca $marca)
+    public function update(MarcaEditRequest $request, Marca $marca)
     {
         request()->validate(Marca::$rules);
 

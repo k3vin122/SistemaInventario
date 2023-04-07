@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Proveedore;
+use App\Http\Requests\ProveedoreCreateRequest;
+use App\Http\Requests\ProveedoreEditRequest;
+
+
+
 use Illuminate\Http\Request;
 
 /**
@@ -21,7 +26,7 @@ class ProveedoreController extends Controller
         $countproveedor = Proveedore::count();
         $busqueda_inventario =  $request->busqueda;
 
-        
+
         $proveedores = Proveedore::where('nombre','LIKE','%'.$busqueda_inventario.'%')
         ->orWhere('direccion','LIKE','%'.$busqueda_inventario.'%')
         ->orWhere('rol','LIKE','%'.$busqueda_inventario.'%')
@@ -55,7 +60,7 @@ class ProveedoreController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProveedoreCreateRequest $request)
     {
         request()->validate(Proveedore::$rules);
 
@@ -98,7 +103,7 @@ class ProveedoreController extends Controller
      * @param  Proveedore $proveedore
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proveedore $proveedore)
+    public function update(ProveedoreEditRequest $request, Proveedore $proveedore)
     {
         request()->validate(Proveedore::$rules);
 
